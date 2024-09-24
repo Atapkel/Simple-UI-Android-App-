@@ -64,7 +64,7 @@ fun Second() {
                 modifier = Modifier
                     .width(380.dp)
                     .height(45.dp)
-                    .offset(x = 9.dp)
+                    .offset(16.dp)
             ) {
                 Image(
                     painter = painterResource(R.drawable.ellipse),
@@ -81,15 +81,52 @@ fun Second() {
                     Modifier
                         .width(24.dp)
                         .height(24.dp)
+                        .offset(x = -31.dp)
                 )
             }
+            Spacer(Modifier.height(35.dp))
+            var listDesigner: List<Pair> = listOf(
+                Pair(type = Type.NONE, "Junior UX Designer"),
+                Pair(type = Type.APPLIED, "Junior Product Designer"),
+                Pair(type = Type.EXPRESS, "Middle motion Designer"),
 
+                )
+            CreateContainer("Designer", listDesigner)
+            Spacer(Modifier.height(4.dp))
+            var listAndroid: List<Pair> = listOf(
+                Pair(type = Type.NONE, "Junior Android developer"),
+                Pair(type = Type.EXPRESS, "Middle Android developer"),
+                Pair(type = Type.EXPRESS, "Junior UX Designer"),
 
-            CreateBox("Junior UX Designer", Type.APPLIED)
+                )
+            CreateContainer("Android", listAndroid)
 
         }
     }
 }
+
+@Composable
+fun CreateContainer(name: String, pairs: List<Pair>) {
+    Column(modifier = Modifier.offset(x = 16.dp)) {
+        Text(
+            text = name,
+            fontSize = 12.sp,
+            fontFamily = FontFamily(Font(R.font.poppins_semi_bold)),
+            color = Color(0xFF434545),
+            style = TextStyle(
+                letterSpacing = 1.sp
+            )
+        )
+        Spacer(Modifier.height(16.dp))
+        for (pair in pairs) {
+            println("Type: ${pair.type}, Title: ${pair.text}")
+            CreateBox(pair.text, pair.type)
+            Spacer(Modifier.height(16.dp))
+        }
+
+    }
+}
+
 
 @Composable
 fun CreateBox(titleJob: String, type: Type) {
@@ -117,12 +154,12 @@ fun CreateBox(titleJob: String, type: Type) {
                             Text(
                                 text = titleJob,
                                 fontSize = 14.sp,
-                                fontFamily =  FontFamily(Font(R.font.poppins6)),
+                                fontFamily = FontFamily(Font(R.font.poppins_semi_bold)),
                                 color = Color(0xFF0D0D0D)
                             )
                             Text(
                                 text = "Canva",
-                                fontFamily = FontFamily(Font(R.font.poppins5)),
+                                fontFamily = FontFamily(Font(R.font.poppins_regular)),
                                 color = Color(0xFF434545),
                                 fontSize = 12.sp,
                                 style = TextStyle(
@@ -137,7 +174,10 @@ fun CreateBox(titleJob: String, type: Type) {
 
                 Row(
                     horizontalArrangement = Arrangement.SpaceBetween,
-                    modifier = Modifier.fillMaxWidth().offset(y= 11.dp).padding(end = 11.dp)
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .offset(y = 11.dp)
+                        .padding(end = 11.dp)
                 ) {
                     Box(
                         modifier = Modifier
@@ -149,7 +189,7 @@ fun CreateBox(titleJob: String, type: Type) {
                     ) {
                         Text(
                             "Paystack",
-                            fontFamily = FontFamily(Font(R.font.poppins5)),
+                            fontFamily = FontFamily(Font(R.font.poppins_regular)),
                             fontSize = 12.sp,
                             style = TextStyle(
                                 letterSpacing = 0.25.sp,
@@ -160,7 +200,7 @@ fun CreateBox(titleJob: String, type: Type) {
 
                     Text(
                         "\$40-60k/yearly",
-                        fontFamily = FontFamily(Font(R.font.poppins5)),
+                        fontFamily = FontFamily(Font(R.font.poppins_regular)),
                         style = TextStyle(
                             fontSize = 12.sp,
                             lineHeight = (12 * 1.3f).sp,
@@ -210,7 +250,7 @@ fun doMark(type: Type) {
             )
             Text(
                 text = text, fontSize = 10.sp,
-                fontFamily = FontFamily(Font(R.font.poppins6)),
+                fontFamily = FontFamily(Font(R.font.poppins_semi_bold)),
                 color = Color.White
             )
         }
@@ -218,9 +258,10 @@ fun doMark(type: Type) {
 
 }
 
+data class Pair(val type: Type, val text: String)
+
 enum class Type {
     APPLIED, EXPRESS, NONE;
-
 }
 
 

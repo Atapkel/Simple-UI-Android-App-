@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -27,7 +28,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -53,10 +53,7 @@ fun First() {
     Box(
         modifier = Modifier
             .clip(RoundedCornerShape(30.dp))
-
     ) {
-
-
         Column(
             modifier = Modifier
                 .background(backgroundGradient)
@@ -86,14 +83,13 @@ fun First() {
             Text(
                 text = "Fresh look, same login.",
                 color = Color(0xFFF4F4F4),
-                fontFamily = FontFamily(Font(R.font.poppins6)),
-                fontWeight = FontWeight.SemiBold,
+                fontFamily = FontFamily(Font(R.font.poppins_semi_bold)),
                 fontSize = 24.sp
             )
 
             Spacer(modifier = Modifier.height((34.76.dp)))
 
-            Column(verticalArrangement = Arrangement.SpaceBetween) {
+            Column(verticalArrangement = Arrangement.SpaceEvenly) {
                 CreateTextWithIcon(
                     text = "SmartRecruiters candidate portal is now Smartr.",
                     id = R.drawable.resource_switch,
@@ -119,9 +115,8 @@ fun First() {
 
             Text(
                 text = "Why Smartr? Read here",
-                fontFamily = FontFamily(Font(R.font.poppins6)),
+                fontFamily = FontFamily(Font(R.font.poppins_semi_bold)),
                 fontSize = 10.sp,
-                fontWeight = FontWeight.SemiBold,
                 color = Color(0xFFF4F4F4),
                 textAlign = TextAlign.Center
             )
@@ -141,8 +136,8 @@ fun First() {
                 Text(
                     text = "GET STARTED",
                     fontSize = 15.sp,
-                    fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    fontFamily = FontFamily(Font(R.font.poppins_bold))
                 )
             }
         }
@@ -161,15 +156,14 @@ fun CreateTextWithIcon(
             contentDescription = contentDescriptionOfIcon,
             modifier = Modifier
                 .width((23.73.dp))
-                .height((26.02.dp)),
+                .height((26.02.dp)).offset(y = 13.dp),
             tint = Color(0xFFF4F4F4)
         )
         Text(
             text = text,
             color = Color(0xFFF4F4F4),
-            fontFamily = FontFamily(Font(R.font.poppins6)),
+            fontFamily = FontFamily(Font(R.font.poppins_semi_bold)),
             fontSize = 12.sp,
-            fontWeight = FontWeight.SemiBold,
             modifier = Modifier
                 .height((48.5).dp)
                 .width((134.51.dp))
